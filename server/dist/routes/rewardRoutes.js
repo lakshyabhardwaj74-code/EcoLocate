@@ -1,0 +1,12 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const rewardController_js_1 = require("../controllers/rewardController.js");
+const auth_js_1 = require("../middleware/auth.js");
+const security_js_1 = require("../middleware/security.js");
+const router = (0, express_1.Router)();
+router.get('/catalog', rewardController_js_1.getRewardCatalog);
+router.get('/user', auth_js_1.authenticateToken, rewardController_js_1.getUserRewards);
+router.post('/redeem', auth_js_1.authenticateToken, security_js_1.transactionRateLimiter, rewardController_js_1.redeemReward);
+router.get('/leaderboard', rewardController_js_1.getLeaderboard);
+exports.default = router;

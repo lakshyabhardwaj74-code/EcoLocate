@@ -1,0 +1,204 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #071A21;
+  --color-secondary: #16A6A0;
+  --color-accent: #38D9E8;
+  --color-highlight: #D8F36A;
+  --color-neutral: #F5F7F4;
+  --color-dark-text: #071A21;
+
+  --color-navy: #071A21;
+  --color-navy-dark: #051419;
+  --color-navy-light: #0d2a33;
+  --color-electric: #16A6A0;
+  --color-electric-hover: #0f8580;
+  --color-cyan: #38D9E8;
+  --color-cyan-glow: rgba(56, 217, 232, 0.12);
+  --color-offwhite: #F5F7F4;
+  --color-surface-dark: #051419;
+  --color-text-main: #071A21;
+  --color-text-muted: #5e777f;
+  --color-border: #D1DEDF;
+}
+
+@layer base {
+  body {
+    background-color: var(--color-offwhite);
+    color: var(--color-text-main);
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Outfit', sans-serif;
+    color: var(--color-navy);
+    letter-spacing: -0.02em;
+  }
+}
+
+/* Subtle 3D, Elevation & Shadow Utilities */
+.shadow-subtle {
+  box-shadow: 0 1px 3px 0 rgba(11, 31, 58, 0.04), 0 1px 2px -1px rgba(11, 31, 58, 0.03);
+}
+
+.shadow-card {
+  box-shadow: 0 4px 6px -1px rgba(11, 31, 58, 0.05), 0 2px 4px -2px rgba(11, 31, 58, 0.04);
+}
+
+.shadow-3d {
+  box-shadow: 0 10px 25px -5px rgba(11, 31, 58, 0.08), 0 8px 10px -6px rgba(11, 31, 58, 0.04);
+}
+
+.shadow-3d-hover {
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.shadow-3d-hover:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 30px -6px rgba(11, 31, 58, 0.12), 0 10px 12px -5px rgba(11, 31, 58, 0.06);
+}
+
+.shadow-modal {
+  box-shadow: 0 25px 50px -12px rgba(11, 31, 58, 0.25);
+}
+
+/* 3D Perspective & Tilt Container */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.card-layer-back {
+  transform: translateZ(-20px);
+}
+
+.card-layer-front {
+  transform: translateZ(20px);
+}
+
+/* Button Micro-Interactions */
+.btn-press {
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
+}
+
+.btn-press:hover {
+  transform: translateY(-1px);
+}
+
+.btn-press:active {
+  transform: translateY(1px);
+}
+
+/* Leaflet Map Customizations */
+.leaflet-container {
+  font-family: inherit;
+  border-radius: 1rem;
+}
+
+.custom-leaflet-popup .leaflet-popup-content-wrapper {
+  border-radius: 0.875rem;
+  padding: 0.25rem;
+  box-shadow: 0 12px 30px -4px rgba(11, 31, 58, 0.18);
+  border: 1px solid #E2E8F0;
+}
+
+.custom-leaflet-popup .leaflet-popup-content {
+  margin: 0.5rem;
+}
+
+/* Pulse Node Animation */
+@keyframes node-pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.15);
+    opacity: 1;
+  }
+}
+
+.animate-node-pulse {
+  animation: node-pulse 3s infinite ease-in-out;
+}
+
+/* Scanning Laser Animation for AI Scanner */
+@keyframes scan-laser {
+  0% {
+    top: 0%;
+    opacity: 0.8;
+  }
+  50% {
+    top: 96%;
+    opacity: 1;
+  }
+  100% {
+    top: 0%;
+    opacity: 0.8;
+  }
+}
+
+.animate-scan-laser {
+  animation: scan-laser 2.2s infinite ease-in-out;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F1F5F9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94A3B8;
+}
+
+/* Glass panels & Tech background patterns */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(22, 166, 160, 0.12);
+}
+
+.glass-panel-dark {
+  background: rgba(7, 26, 33, 0.75);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(56, 217, 232, 0.15);
+}
+
+.tech-grid {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(22, 166, 160, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(22, 166, 160, 0.04) 1px, transparent 1px);
+}
+
+.glow-accent {
+  box-shadow: 0 0 40px -5px rgba(56, 217, 232, 0.25);
+}
+
+.glow-lime {
+  box-shadow: 0 0 35px -5px rgba(216, 243, 106, 0.25);
+}
+
+.text-gradient-primary {
+  background: linear-gradient(135deg, #071A21 20%, #16A6A0 65%, #38D9E8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+

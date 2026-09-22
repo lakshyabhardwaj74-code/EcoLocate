@@ -1,0 +1,16 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const adminController_js_1 = require("../controllers/adminController.js");
+const auth_js_1 = require("../middleware/auth.js");
+const router = (0, express_1.Router)();
+router.use(auth_js_1.authenticateToken);
+router.use((0, auth_js_1.requireRoles)(['ADMIN']));
+router.get('/stats', adminController_js_1.getAdminStats);
+router.get('/users', adminController_js_1.getUsersList);
+router.get('/facility-members', adminController_js_1.getFacilityMembers);
+router.put('/facilities/:id/verify', adminController_js_1.verifyFacility);
+router.put('/users/:id/status', adminController_js_1.toggleUserStatus);
+router.put('/users/:id/reset-password', adminController_js_1.resetUserPassword);
+router.get('/export-csv', adminController_js_1.exportAuditReportCSV);
+exports.default = router;

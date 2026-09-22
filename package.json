@@ -1,0 +1,23 @@
+{
+  "name": "sih1392-ewaste-locator-root",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "concurrently -n \"SERVER,CLIENT\" -c \"blue,green\" \"npm run dev:server\" \"npm run dev:client\"",
+    "start": "npm run dev",
+    "dev:server": "npm --prefix server run dev",
+    "dev:client": "npm --prefix client run dev",
+    "build:client": "npm --prefix client run build",
+    "build:server": "npm --prefix server run build",
+    "build": "npm run build:server && npm run build:client",
+    "seed": "npm --prefix server run prisma:seed",
+    "db:push": "npm --prefix server run prisma:push"
+  },
+  "devDependencies": {
+    "concurrently": "^10.0.5",
+    "prisma": "^5.22.0"
+  },
+  "dependencies": {
+    "@prisma/client": "^5.22.0"
+  }
+}

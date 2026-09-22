@@ -1,0 +1,13 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const facilityController_js_1 = require("../controllers/facilityController.js");
+const auth_js_1 = require("../middleware/auth.js");
+const router = (0, express_1.Router)();
+router.get('/', facilityController_js_1.getFacilities);
+router.get('/managed/stats', auth_js_1.authenticateToken, (0, auth_js_1.requireRoles)(['FACILITY_MEMBER']), facilityController_js_1.getManagedFacilityStats);
+router.get('/:id', facilityController_js_1.getFacilityById);
+router.post('/', auth_js_1.authenticateToken, (0, auth_js_1.requireRoles)(['ADMIN', 'FACILITY_MEMBER']), facilityController_js_1.createFacility);
+router.put('/:id', auth_js_1.authenticateToken, (0, auth_js_1.requireRoles)(['ADMIN', 'FACILITY_MEMBER']), facilityController_js_1.updateFacility);
+router.post('/:id/reviews', auth_js_1.authenticateToken, facilityController_js_1.addReview);
+exports.default = router;
